@@ -31,11 +31,12 @@ Contoso has several options available when moving DevTest to Azure.
 
 The Development Leadership team has outlined what they want to achieve with this migration:
 
+- Empower developers with access to DevOps tools and self service environments.
 - Quickly provision development and test environments. It should take minutes not months to build the infrastructure a developer needs to write or test software.
-- Empower developers with access to DevOps tools and self service environments. IT will no longer be responsible for provisioning DevTest systems.
+- Access to DevOps tools for CI/CD pipelines and cloud native tools for DevTest such as AI, Machine Learning and Serverless. 
 - Ensure governance and compliance in DevTest environments.
 - Save costs by moving all DevTest environments out of their data center, and no longer purchase hardware to develop software.
-- Access to DevOps tools for CI/CD pipelines and cloud native tools for DevTest such as AI, Machine Learning and Serverless. 
+
 
 > ![NOTE]
 > Contoso will leverage the Pay-As-You-Go [Dev/Test subscription offer](https://azure.microsoft.com/offers/ms-azr-0023p/) for their environments. Each active Visual Studio subscriber on their team can use the Microsoft software included with their subscription on Azure Virtual Machines for DevTest at no extra charge. Contoso will just pay the Linux rate for VMs they run, even VMs with SQL Server, SharePoint Server, or other software that is normally billed at a higher rate. 
