@@ -32,7 +32,6 @@ Contoso has several options available when moving DevTest to Azure.
 The Development Leadership team has outlined what they want to achieve with this migration:
 
 - Empower developers with access to DevOps tools and self service environments.
-- Quickly provision development and test environments. It should take minutes not months to build the infrastructure a developer needs to write or test software.
 - Access to DevOps tools for CI/CD pipelines and cloud native tools for DevTest such as AI, Machine Learning and Serverless. 
 - Ensure governance and compliance in DevTest environments.
 - Save costs by moving all DevTest environments out of their data center, and no longer purchase hardware to develop software.
@@ -45,6 +44,7 @@ The Development Leadership team has outlined what they want to achieve with this
 
 The Contoso development team has pinned down goals for this migration. These goals are used to determine the best migration method:
 
+- Quickly provision development and test environments. It should take minutes not months to build the infrastructure a developer needs to write or test software.
 - After migration, Contoso's DevTest environment in Azure should have enhanced capabilities over the current system in VMware.
 - The operations model will move from IT provisioned to DevOps and with self-service provisioning.
 - Contoso wants to quickly move out of their on-premises DevTest environments.
