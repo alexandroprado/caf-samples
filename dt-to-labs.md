@@ -25,7 +25,7 @@ Contoso has several options available when moving DevTest to Azure.
 [**Azure DevTest Labs**](https://azure.microsoft.com/services/devtest-lab/) | Quickly provision development and test environments<br/><br/> Minimize waste with quotas and policies<br/><br/> Set automated shutdowns to minimize costs <br/><br/>Build Windows and Linux environments
 
 > [NOTE]:
-> This article focuses on using the Azure DevTest Labs service, to move an on-premises DevTest environment to Azure. Read how Contoso moved [DevTest to Azure using IaaS](./dt-to-iaas.md) using Azure Migrate.
+> This article focuses on using the Azure DevTest Labs service, to move an on-premises DevTest environment to Azure. Read how Contoso moved [DevTest to Azure using IaaS](./dt-to-labs.md) using Azure Migrate.
 
 ## Business drivers
 
@@ -45,8 +45,8 @@ The Development Leadership team has outlined what they want to achieve with this
 The Contoso development team has pinned down goals for this migration. These goals are used to determine the best migration method:
 
 - Quickly provision development and test environments. It should take minutes not months to build the infrastructure a developer needs to write or test software.
-- After migration, Contoso's DevTest environment in Azure should have enhanced capabilities over the current system in VMware.
-- The operations model will move from IT provisioned to DevOps and with self-service provisioning.
+- After migration, Contoso's DevTest environment in Azure should have enhanced capabilities over the current system on-premises.
+- The operations model will move from IT provisioned VMs to DevOps with self-service provisioning.
 - Contoso wants to quickly move out of their on-premises DevTest environments.
 - All Developers to connect to DevTest environments remotely, but in a secure manor.
 
@@ -62,20 +62,19 @@ After pinning down goals and requirements, Contoso designs and reviews a deploym
 
 ### Proposed architecture
 
-- Contoso will use a [DevTest subscription](https://azure.microsoft.com/offers/ms-azr-0023p/) to save costs on Azure resources. This subscription offers significant savings since VMs are don't incur licensing fees for Microsoft software.
+- Contoso will use a [DevTest subscription](https://azure.microsoft.com/offers/ms-azr-0023p/) to save costs on Azure resources. This subscription offers significant savings including VMs are don't incur licensing fees for Microsoft software.
 - Azure DevTest Labs will be used for managing the DevTest environments.
 - The on-premises DevTest VMs in the Contoso data-center will be decommissioned after the migration is done.
 - Developers and Testers will have access to Windows Virtual Desktop for their workstations.
 
-![Scenario architecture](./media/dt-to-iaas/architecture.png)
+![Scenario architecture](./media/dt-to-labs/architecture.png)
 
 ### Database considerations
 
-To support ongoing development Contoso has decided to continue use of the existing VMs, migrated to Azure.  In the future, Contoso will pursue the use of PaaS services such as [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) and [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/).
+To support ongoing development Contoso has decided to continue use of the existing VMs, migrated to Azure. In the future, Contoso will pursue the use of PaaS services such as [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) and [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/).
 
 - Database VMs will be migrated as is without changes.
 - With the use of the Azure Dev/Test subscription offer, the Windows and SQL Servers will not incur licensing fees which will keep the compute costs to a minimum.
-- In the future, Contoso will look to integrate their development with PaaS Services.
 
 ### Solution review
 
@@ -103,13 +102,13 @@ Contoso will migrate their development front-end and database to Azure VMs using
 - After replication is enabled and working, Contoso will migrate the VMs by testing the migration and if successful, failing it over to Azure.
 - Once the development VMs are up and running in Azure, they will reconfigure their development workstations to point at the VMs now running in Azure.
 
-![Migration process](./media/dt-to-iaas/migration-process-az-migrate.png)
+![Migration process](./media/dt-to-labs/migration-process-az-migrate.png)
 
 ### Azure services
 
 **Service** | **Description** | **Cost**
 --- | --- | ---
-[Azure Migrate Server Migration](https://docs.microsoft.com/azure/migrate/dt-to-iaas) | The service orchestrates and manages migration of your on-premises apps and workloads, and AWS/GCP VM instances. | During replication to Azure, Azure Storage charges are incurred. Azure VMs are created, and incur charges, when the migration occurs and the VMs are running in Azure. [Learn more](https://azure.microsoft.com/pricing/details/azure-migrate) about charges and pricing.
+[Azure Migrate Server Migration](https://docs.microsoft.com/azure/migrate/dt-to-labs) | The service orchestrates and manages migration of your on-premises apps and workloads, and AWS/GCP VM instances. | During replication to Azure, Azure Storage charges are incurred. Azure VMs are created, and incur charges, when the migration occurs and the VMs are running in Azure. [Learn more](https://azure.microsoft.com/pricing/details/azure-migrate) about charges and pricing.
 
 ## Prerequisites
 
@@ -120,7 +119,7 @@ Here's what Contoso needs to run this scenario.
 **Requirements** | **Details**
 --- | ---
 **Azure Dev/Test subscription** | Contoso creates a [DevTest subscription](https://azure.microsoft.com/offers/ms-azr-0023p/) to take advantage of up to 80% reduction in costs.<br/><br/> If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/free-trial).<br/><br/> If you create a free account, you're the administrator of your subscription and can perform all actions.<br/><br/> If you use an existing subscription and you're not the administrator, you need to work with the admin to assign you Owner or Contributor permissions.<br/><br/> If you need more granular permissions, review [this article](https://docs.microsoft.com/azure/site-recovery/site-recovery-role-based-linked-access-control).
-**Azure infrastructure** | [Learn how](./contoso-migration-infrastructure.md) Contoso set up an Azure infrastructure.<br/><br/> Learn more about specific [prerequisites](https://docs.microsoft.com/azure/migrate/dt-to-iaas#prerequisites) requirements for Azure Migrate Server Migration.
+**Azure infrastructure** | [Learn how](./contoso-migration-infrastructure.md) Contoso set up an Azure infrastructure.<br/><br/> Learn more about specific [prerequisites](https://docs.microsoft.com/azure/migrate/dt-to-labs#prerequisites) requirements for Azure Migrate Server Migration.
 **On-premises servers** | On-premises vCenter Servers should be running version 5.5, 6.0, 6.5 or 6.7<br/><br/> ESXi hosts should run version 5.5, 6.0, 6.5 or 6.7<br/><br/> One or more VMware VMs should be running on the ESXi host.
 
 <!-- markdownlint-enable MD033 -->
