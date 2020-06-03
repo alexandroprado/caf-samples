@@ -121,27 +121,28 @@ Here's how Contoso admins will run the migration:
 
 > [!div class="checklist"]
 >
-> - **Step 1: Provision DevTest Labs in the new DevTest subscription**
+> - **Step 1: Provision new DevTest subscription and create a DevTest Labs**
 > - **Step 2: Configure the Development virtual network, assign a resource group and set polices**
 > - **Step 3: Create Windows Virtual Desktops for developers to use remote locations**
 > - **Step 4: Create VMs within DevTest Labs for development & migrate databases**
 
-## Step 1: Provision DevTest Labs in the new DevTest subscription
+## Step 1: Provision new DevTest subscription and create a DevTest Labs
 
-Here are the Azure components Contoso needs to migrate the DevTest to Azure:
-
-- Item 1
-- Item 2
+Contoso first needs a provision a new Azure Subscription using the DevTest offer and then create a DevTest Labs.
 
 They set these up as follows:
 
-1. Foo
- - Foo1
- - Foo2
- - Foo2
+1. Contoso follows the link to the [DevTest subscription](https://azure.microsoft.com/offers/ms-azr-0023p/) offer and provisions a new subscription saving them up to 80% on their systems. This offer allows Contoso to run Windows 10 images on Azure for dev/test. They will gain access the [Windows Virtual Desktop service](https://azure.microsoft.com/services/virtual-desktop/) to simplify the management experience of the remote developers.
 
-2. Bar
- - Bar1
+![DevTest Offer](./media/dt-to-labs/dt-sub.png)
+ 
+
+2. With their new subscription provisioned, Contoso next uses the Azure portal to create a new DevTest Labs instance.
+
+- The new lab is created in the ContosoDevRG resource group.
+
+![Create DevTest Labs with Portal](./media/dt-to-labs/new-lab.png) 
+
  - Bar2
  - Bar3
 
