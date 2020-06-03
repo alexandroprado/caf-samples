@@ -135,32 +135,42 @@ They set these up as follows:
 1. Contoso follows the link to the [DevTest subscription](https://azure.microsoft.com/offers/ms-azr-0023p/) offer and provisions a new subscription saving them up to 80% on their systems. This offer allows Contoso to run Windows 10 images on Azure for dev/test. They will gain access the [Windows Virtual Desktop service](https://azure.microsoft.com/services/virtual-desktop/) to simplify the management experience of the remote developers.
 
 ![DevTest Offer](./media/dt-to-labs/dt-sub.png)
- 
 
-2. With their new subscription provisioned, Contoso next uses the Azure portal to create a new DevTest Labs instance.
+2. With their new subscription provisioned, Contoso uses the Azure portal to create a new DevTest Labs instance.
 
 - The new lab is created in the ContosoDevRG resource group.
 
 ![Create DevTest Labs with Portal](./media/dt-to-labs/new-lab.png) 
 
- - Bar2
- - Bar3
-
  ## Step 2: Configure the Development virtual network, assign a resource group and set polices
 
-Here are the Azure components Contoso needs to migrate the DevTest to Azure:
+With the DevTest Labs created Contoso will complete configurations on the following items:
 
-- Item 1
-- Item 2
+- Configure virtual network
+- Assign resource group
+- Set lab policies
 
 They set these up as follows:
 
-1. Foo
- - Foo1
- - Foo2
- - Foo2
+1. Configure virtual network
+ - In the portal, Contoso opens the DevTest Lab and selects Configuration and polices
+ 
+ ![Configuration and policies](./media/dt-to-labs/config-lab.png)
+ 
+ - Contoso selects Virtual Networks, clicking +Add and then selects the ***vnet-dev-eus2*** and then Save. This allows the Development VNet to be used for VM deployments. There is also a virtual network that was created during the deployment of the DevTest Labs instance.
 
-2. Bar
+ ![Virtual networks](./media/dt-to-labs/vnets.png)
+
+2. Assign resource group
+ - To ensure that resources are deployed to ***ContosoDevRG*** resource group, Contoso configures this in the Lab settings. They also configure their developers as Contributor.
+ 
+![Assign resource group](./media/dt-to-labs/rg.png)
+
+> [NOTE]:
+> The contributor role has is an administrator level role with all rights with the exception of having the ability to provide access to to other users. Read more about [Azure RBAC controls](https://docs.microsoft.com/azure/role-based-access-control/overview).
+
+
+ 3. Set lab policies
  - Bar1
  - Bar2
  - Bar3
