@@ -62,8 +62,8 @@ After pinning down goals and requirements, Contoso designs and reviews a deploym
 
 ### Proposed architecture
 
-- Contoso will use a [DevTest subscription](https://azure.microsoft.com/offers/ms-azr-0023p/) to save costs on Azure resources. This subscription offers significant savings including VMs are don't incur licensing fees for Microsoft software.
-- Azure DevTest Labs will be used for managing the DevTest environments. New VMs will be created in the DevTest Labs in support of their move to new tools for Development in the cloud.
+- Contoso will use a [DevTest subscription](https://azure.microsoft.com/offers/ms-azr-0023p/) to save costs on Azure resources. This subscription offers significant savings including VMs that don't incur licensing fees for Microsoft software.
+- Azure DevTest Labs will be used for managing the environments. New VMs will be created in DevTest Labs in support of their move to new tools for Development and Test in the cloud.
 - The on-premises DevTest VMs in the Contoso data-center will be decommissioned after the migration is done.
 - Developers and Testers will have access to Windows Virtual Desktop for their workstations.
 
@@ -71,9 +71,9 @@ After pinning down goals and requirements, Contoso designs and reviews a deploym
 
 ### Database considerations
 
-To support ongoing development Contoso has decided to continue use VMs, but the current VMs will be replaced with new ones running in DevTest Labs. In the future, Contoso will pursue the use of PaaS services such as [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) and [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/).
+To support ongoing development Contoso has decided to continue use databases running on VMs, but the current VMs will be replaced with new ones running in Azure DevTest Labs. In the future, Contoso will pursue the use of PaaS services such as [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) and [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/).
 
-- Current Database VMs will be decommissioned and replaced with VMs in DevTest Labs.  The existing databases will be migrated with simple backups and restores.
+- Current VMware database VMs will be decommissioned and replaced with Azure VMs in DevTest Labs.  The existing databases will be migrated with simple backups and restores.
 - With the use of the Azure Dev/Test subscription offer, the Windows and SQL Servers will not incur licensing fees which will keep the compute costs to a minimum.
 
 ### Solution review
@@ -84,20 +84,20 @@ Contoso evaluates the proposed design by putting together a pros and cons list.
 
 **Consideration** | **Details**
 --- | ---
-**Pros** | All of the current development VMs (application and database) will be replaced by new VMs running in Azure DevTest Labs. This means they can take advantage of the features of a purpose build cloud development environment.<br/><br/> Contoso can take advantage of their investment in the Dev/Test subscription to save on licensing fees.<br/><br/> Contoso will retain full control of the app VMs in Azure.<br/><br/>Developers will be provided with rights to the subscription which empowers them to create new resources without waiting for IT to respond to their requests
-**Cons** | The migration will only move development to the cloud, but since they are still using VMs they won't be using using PaaS Services in their development. This means that Contoso will need have to start supporting the operations of their VMs including security patches. This was maintained by IT in the past, so they will need to find a solution to this new operational task.
+**Pros** | All of the current development VMs (application and database) will be replaced by new VMs running in Azure DevTest Labs. This means they can take advantage of the features of a purpose built cloud development environment.<br/><br/> Contoso can take advantage of their investment in the Dev/Test subscription to save on licensing fees.<br/><br/> Contoso will retain full control of the app VMs in Azure.<br/><br/>Developers will be provided with rights to the subscription which empowers them to create new resources without waiting for IT to respond to their requests
+**Cons** | The migration will only move development to the cloud, but since they are still using VMs they won't be using using PaaS Services in their development. This means that Contoso will need have to start supporting the operations of their VMs including security patches. This was maintained by IT in the past, so they will need to find a solution to this new operational task.<br/><br/> Contoso will have to rebuild some their application VMs, but in doing so they will be automating the process. This means they can take advantage of building VMs in the cloud
 
 <!-- markdownlint-enable MD033 -->
 
 ### Migration process
 
-Contoso will migrate their development front-end and databases to new Azure VMs using Azure DevTest Labs.
+Contoso will migrate their development front-end and databases VMs to new Azure VMs using Azure DevTest Labs.
 
 - They already have the [Azure infrastructure](./contoso-migration-infrastructure.md) in place, including their Development virtual network.
 - With everything prepared, Contoso provisions and configures DevTest Labs.
-- Configure the Development virtual network, assign a resource group and set polices.
-- Create Windows Virtual Desktops for developers to use remote locations.
-- Create VMs within DevTest Labs for development.
+- They will configure the development virtual network, assign a resource group and set polices.
+- Contoso will create Windows Virtual Desktops for developers to use remote locations.
+- Create VMs within DevTest Labs for development and migrate databases.
 
 ![Migration process](./media/dt-to-labs/migration-process-dtlabs.png)
 
@@ -138,7 +138,7 @@ They set these up as follows:
 
 2. With their new subscription provisioned, Contoso uses the Azure portal to create a new DevTest Labs instance.
 
-- The new lab is created in the ContosoDevRG resource group.
+- The new lab is created in the ***ContosoDevRG*** resource group.
 
 ![Create DevTest Labs with Portal](./media/dt-to-labs/new-lab.png) 
 
@@ -153,7 +153,7 @@ With the DevTest Labs created Contoso will complete configurations on the follow
 They set these up as follows:
 
 1. Configure virtual network
- - In the portal, Contoso opens the DevTest Lab and selects Configuration and polices
+ - In the portal, Contoso opens the DevTest Lab and selects ***Configuration and polices***
  
  ![Configuration and policies](./media/dt-to-labs/config-lab.png)
  
@@ -167,27 +167,38 @@ They set these up as follows:
 ![Assign resource group](./media/dt-to-labs/rg.png)
 
 > [NOTE]:
-> The contributor role has is an administrator level role with all rights with the exception of having the ability to provide access to to other users. Read more about [Azure RBAC controls](https://docs.microsoft.com/azure/role-based-access-control/overview).
+> The contributor role is an administrator level role with all rights with the exception of having the ability to provide access to to other users. Read more about [Azure RBAC controls](https://docs.microsoft.com/azure/role-based-access-control/overview).
 
 
  3. Set lab policies
- - Bar1
- - Bar2
- - Bar3
+ - Contoso needs to ensure that their developers are using DevTest Labs within the polices of their team.  They configure the DevTest Labs with these polices.
+ 
+ - Auto-shutdown is enabled with a local time of 7:00:00 PM and the correct timezone.
+    ![Auto shutdown](./media/dt-to-labs/autoshutdown.png)
+
+ - Auto-start is enabled to have their VMs up and running when the developers come online to work. They are configured to the local timezone and for the days of the week when they work.
+     ![Auto start](./media/dt-to-labs/autostart.png)
+- The allowed VM sizes are configured, insuring that large and expensive VMs are not allowed to be started.
+    ![Allowed VM Sizes](./media/dt-to-labs/vmsizes.png)
+
+- The Support message is configured.
+    ![Support Message](./media/dt-to-labs/support.png)
 
  ## Step 3: Create Windows Virtual Desktops for developers to use remote locations
 
-Here are the Azure components Contoso needs to migrate the DevTest to Azure:
+Contoso needs to create a Windows Virtual Desktop which can be used by remote developers.  They follow a two step process to ensure this can be reused:
 
-- Item 1
-- Item 2
+- Create a Formula (reusable base) for the Remote Developers
+- Provision a VM in Azure DevTest Labs for Remote Developers
 
-They set these up as follows:
+1. Contoso creates a Formula (reusable base)
+ - Contoso opens the the Formulas, clicks +Add, and selects a ***Windows 10 Enterprise multi-session*** base.
+![Windows 10 Base](./media/dt-to-labs/win10base.png)
 
-1. Foo
- - Foo1
- - Foo2
- - Foo2
+ - Next the size of the VM is configured along with the Artifacts to be installed. In this case the developers will have access to common development tools such as Visual Studio Code, Git, and Chocolatey.
+![Artifacts](./media/dt-to-labs/artifacts.png)
+
+ - With the Formula created, Contoso now creates a 
 
 2. Bar
  - Bar1
