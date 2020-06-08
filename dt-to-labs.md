@@ -198,42 +198,63 @@ Contoso needs to create a Windows Virtual Desktop which can be used by remote de
 
 1. Contoso creates a Formula (reusable base)
  - Contoso opens the the Formulas, clicks +Add, and selects a ***Windows 10 Enterprise multi-session*** base.
-![Windows 10 Base](./media/dt-to-labs/win10base.png)
 
- - Next the size of the VM is configured along with the Artifacts to be installed. In this case the developers will have access to common development tools such as Visual Studio Code, Git, and Chocolatey.
-![Artifacts](./media/dt-to-labs/artifacts.png)
+    ![Windows 10 Base](./media/dt-to-labs/win10base.png)
 
- - With the Formula created, Contoso now creates a 
+ - Next the size of the VM is configured along with the Artifacts to be installed. In this case, the developers will have access to common development tools such as Visual Studio Code, Git, and Chocolatey.
 
-2. Bar
- - Bar1
- - Bar2
- - Bar3
+    ![Artifacts](./media/dt-to-labs/artifacts.png)
+
+ Learn more about using [Formulas](https://docs.microsoft.com/en-us/azure/lab-services/devtest-lab-manage-formulas) with Azure DevTest Labs.
+
+2. With the Formula created, Contoso now creates a VM from the ***RemoteDevs*** Forumla.
+ - From the All virtual machines menu, Contoso selects +Add and then the RemoteDevs base.
+
+    ![Create VM](./media/dt-to-labs/createvm.png)
+
+ - The VM configuration is reviewed and accepted given that is is made from the RemoveDev Formula.
+
+    ![Create VM from Formula](./media/dt-to-labs/vmfrombase.png)
+    
+ - Once the VM is created Contoso's Remote Developers can then connect and use this development workstation for their work. The artifacts selected in the Formula are installed saving Developers time configuring their workstation.
+
+    ![Remote Devs VM](./media/dt-to-labs/remotevm.png)
 
  ## Step 4: Create VMs within DevTest Labs for development
 
-Here are the Azure components Contoso needs to migrate the DevTest to Azure:
+With Azure DevTest Labs configured and the Remote Developers workstation up and running, now Contoso focuses on building their VMs for development. To get started, Contoso creates their first Windows based Application VM and then SQL Database VM.
 
-- Item 1
-- Item 2
+- Application VMs are built using the bases provided by Azure DevTest Labs
+- Database VMs are built using the bases provided by Azure DevTest Labs
 
-They set these up as follows:
+1. Application VMs are built using the bases provided by Azure DevTest Labs
 
-1. Foo
- - Foo1
+- Contoso selects All virtual machines and then Windows Server 2012 R2 Datacenter to match the configuration of their current application.
+
+    ![Application VM](./media/dt-to-labs/appvm.png)
+
+ - The VM is configured, with the size and artifacts that are required for this application VM.
+
+    ![Configured App VM](.media/dt-to-labs/appvmconfig.png)
+
  - Foo2
- - Foo2
 
-2. Bar
- - Bar1
- - Bar2
- - Bar3
+2. Database VMs are built using the bases provided by Azure DevTest Labs
 
+- Contoso selects All virtual machines and then Windows Server 2012 R2 Datacenter to match the configuration of their current application.
+
+    ![Database VM](./media/dt-to-labs/dbvm.png)
+
+ - The VM is configured, with the size and artifacts that are required for this Database VM, including SQL Server Management Studio.
+
+    ![Configured Database VM](./media/dt-to-labs/dbvmconfig.png)
+
+With their Application and Database VMs now running in Azure DevTest Labs, the Remote developers and connect to the VMs using the Azure virtual network as they would normally.
 
  **Need more help?**
 
-- [Learn about](LINK) Some text
-- [Learn about](LINK) Some text
+- [Create](https://docs.microsoft.com/en-us/azure/lab-services/devtest-lab-create-lab) an Azure DevTest Labs in your subscription now.
+- [Learn about](https://docs.microsoft.com/en-us/azure/lab-services/devtest-lab-developer-lab) Using Azure DevTest Labs for Developers.
 
 ## Clean up after migration
 
@@ -246,10 +267,6 @@ Now, Contoso needs to complete these cleanup steps:
 - Update internal documentation to show the new location, and IP addresses for the VMs.
 - Review any resources that interact with the VMs, and update any relevant settings or documentation to reflect the new configuration.
 
-## Review the deployment
-
-With the app now running, Contoso now needs to fully operationalize and secure it in Azure.
-
 ### Security
 
 The Contoso security team reviews the Azure VMs, to determine any security issues.
@@ -258,13 +275,6 @@ The Contoso security team reviews the Azure VMs, to determine any security issue
 - The team also consider securing the data on the disk using Azure Disk Encryption and Key Vault.
 
 For more information, see [Security best practices for IaaS workloads in Azure](https://docs.microsoft.com/azure/security/fundamentals/iaas).
-
-## Business continuity and disaster recovery
-
-For business continuity and disaster recovery (BCDR), Contoso takes the following actions:
-
-- Keep data safe: Contoso backs up the data on the VMs using the Azure Backup service. [Learn more](https://docs.microsoft.com/azure/backup/backup-overview).
-
 
 ### Licensing and cost optimization
 
