@@ -235,19 +235,20 @@ With Azure DevTest Labs configured and the Remote Developers workstation up and 
 
  - The VM is configured, with the size and artifacts that are required for this application VM.
 
-    ![Configured App VM](.media/dt-to-labs/appvmconfig.png)
+    ![Configured App VM](./media/dt-to-labs/appvmconfig.png)
 
- - Foo2
-
+ 
 2. Database VMs are built using the bases provided by Azure DevTest Labs
 
 - Contoso selects All virtual machines and then Windows Server 2012 R2 Datacenter to match the configuration of their current application.
 
     ![Database VM](./media/dt-to-labs/dbvm.png)
 
- - The VM is configured, with the size and artifacts that are required for this Database VM, including SQL Server Management Studio.
+- The VM is configured, with the size and artifacts that are required for this Database VM, including SQL Server Management Studio.
 
     ![Configured Database VM](./media/dt-to-labs/dbvmconfig.png)
+
+- Contoso's Developers will now restore their development databases from either backups or using some type of code generation process to build the schema on the VMs. With the SQL Management Studio already installed using the artifacts these are simple tasks that don't require installing any tools.
 
 With their Application and Database VMs now running in Azure DevTest Labs, the Remote developers and connect to the VMs using the Azure virtual network as they would normally.
 
