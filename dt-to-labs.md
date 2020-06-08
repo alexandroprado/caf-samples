@@ -174,14 +174,19 @@ They set these up as follows:
  - Contoso needs to ensure that their developers are using DevTest Labs within the polices of their team.  They configure the DevTest Labs with these polices.
  
  - Auto-shutdown is enabled with a local time of 7:00:00 PM and the correct timezone.
+
     ![Auto shutdown](./media/dt-to-labs/autoshutdown.png)
 
  - Auto-start is enabled to have their VMs up and running when the developers come online to work. They are configured to the local timezone and for the days of the week when they work.
+
      ![Auto start](./media/dt-to-labs/autostart.png)
+
 - The allowed VM sizes are configured, insuring that large and expensive VMs are not allowed to be started.
+
     ![Allowed VM Sizes](./media/dt-to-labs/vmsizes.png)
 
 - The Support message is configured.
+
     ![Support Message](./media/dt-to-labs/support.png)
 
  ## Step 3: Create Windows Virtual Desktops for developers to use remote locations
