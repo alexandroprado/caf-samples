@@ -251,12 +251,7 @@ With Azure DevTest Labs configured and the Remote Developers workstation up and 
 - Contoso's Developers will now restore their development databases from either backups or using some type of code generation process to build the schema on the VMs. With the SQL Management Studio already installed using the artifacts these are simple tasks that don't require installing any tools.
 
 With their Application and Database VMs now running in Azure DevTest Labs, the Remote developers and connect to the VMs using the Azure virtual network as they would normally.
-
- **Need more help?**
-
-- [Create](https://docs.microsoft.com/en-us/azure/lab-services/devtest-lab-create-lab) an Azure DevTest Labs in your subscription now.
-- [Learn about](https://docs.microsoft.com/en-us/azure/lab-services/devtest-lab-developer-lab) Using Azure DevTest Labs for Developers.
-
+ 
 ## Clean up after migration
 
 With migration complete, all development VMs are now running in Azure DevTest Labs.
@@ -286,3 +281,8 @@ For more information, see [Security best practices for IaaS workloads in Azure](
 ## Conclusion
 
 In this article, Contoso moved their development environments to Azure DevTest Labs. They also implemented Windows Virtual Desktop as a platform for remote and contract developers.
+
+**Need more help?**
+
+- [Create](https://docs.microsoft.com/en-us/azure/lab-services/devtest-lab-create-lab) an Azure DevTest Labs in your subscription now.
+- [Learn about](https://docs.microsoft.com/en-us/azure/lab-services/devtest-lab-developer-lab) Using Azure DevTest Labs for Developers.
