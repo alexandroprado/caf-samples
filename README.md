@@ -19,3 +19,4 @@ This repo is for reviewing potential docs which will end up in CAF
 
 # DevTest Docs to Review
 [Rehost DevTest on Azure VMs with Azure Migrate](./dt-to-iaas.md)
+[Move to Azure DevTest Labs](./dt-to-labs.md)

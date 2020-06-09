@@ -10,7 +10,7 @@ ms.subservice: migrate
 services: azure-migrate
 ---
 
-<!-- cSpell:ignore deltadan VMware contoso contoso's host vcenter contosodc NSGs agentless -->
+<!-- cSpell:ignore deltadan VMware contoso contoso's host vcenter -->
 
 # Moving DevTest to Azure using DevTest Labs (Scenario)
 This article demonstrates how the fictional company Contoso moves their DevTest environment to Azure using DevTest Labs.
@@ -39,6 +39,8 @@ The Development Leadership team has outlined what they want to achieve with this
 
 > ![NOTE]
 > Contoso will leverage the Pay-As-You-Go [Dev/Test subscription offer](https://azure.microsoft.com/offers/ms-azr-0023p/) for their environments. Each active Visual Studio subscriber on their team can use the Microsoft software included with their subscription on Azure Virtual Machines for DevTest at no extra charge. Contoso will just pay the Linux rate for VMs they run, even VMs with SQL Server, SharePoint Server, or other software that is normally billed at a higher rate. 
+
+Azure customers with a Enterprise Agreements can also benefit from the [DevTest subscription offer](https://azure.microsoft.com/offers/ms-azr-0148p/). To learn more, review this [video](https://channel9.msdn.com/blogs/EA.Azure.com/Enabling-and-Creating-EA-DevTest-Subscriptions-through-the-EA-Portal) on creating a DevTest subscription using the Enterprise Agreement portal.
 
 ## Migration goals
 
