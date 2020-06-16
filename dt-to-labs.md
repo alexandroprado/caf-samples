@@ -25,7 +25,7 @@ Contoso has several options available when moving DevTest to Azure.
 [**Azure DevTest Labs**](https://azure.microsoft.com/services/devtest-lab/) | Quickly provision development and test environments<br/><br/> Minimize waste with quotas and policies<br/><br/> Set automated shutdowns to minimize costs <br/><br/>Build Windows and Linux environments
 
 > [NOTE]:
-> This article focuses on using the Azure DevTest Labs service, to move an on-premises DevTest environment to Azure. Read how Contoso moved [DevTest to Azure using IaaS](./dt-to-labs.md) using Azure Migrate.
+> This article focuses on using the Azure DevTest Labs service, to move an on-premises DevTest environment to Azure. Read how Contoso moved [DevTest to Azure using IaaS](./dt-to-labs.md) with Azure Migrate.
 
 ## Business drivers
 
@@ -125,8 +125,8 @@ Here's how Contoso admins will run the migration:
 >
 > - **Step 1: Provision new DevTest subscription and create a DevTest Labs**
 > - **Step 2: Configure the Development virtual network, assign a resource group and set polices**
-> - **Step 3: Create Windows Virtual Desktops for developers to use remote locations**
-> - **Step 4: Create VMs within DevTest Labs for development & migrate databases**
+> - **Step 3: Create Windows 10 Multi-Session Virtual Desktops for developers to use from remote locations**
+> - **Step 4: Create Formulas and VMs within DevTest Labs for development & migrate databases**
 
 ## Step 1: Provision new DevTest subscription and create a DevTest Labs
 
@@ -191,15 +191,13 @@ They set these up as follows:
 
     ![Support Message](./media/dt-to-labs/support.png)
 
- ## Step 3: Create Windows Virtual Desktops for developers to use remote locations
+ ## Step 3: Create Windows 10 Multi-Session Virtual Desktops for developers to use from remote locations
 
-Contoso needs to create a Windows Virtual Desktop which can be used by remote developers.  They follow a two step process to ensure this can be reused:
+Contoso needs to create a Windows Virtual Desktop for remote developers.
 
-- Create a Formula (reusable base) for the Remote Developers
-- Provision a VM in Azure DevTest Labs for Remote Developers
+1. Contoso creates a Windows 10 Muilt-Session VM using a base.
 
-1. Contoso creates a Formula (reusable base)
- - Contoso opens the the Formulas, clicks +Add, and selects a ***Windows 10 Enterprise multi-session*** base.
+ - Contoso opens the All virtual machines, clicks +Add, and selects a ***Windows 10 Enterprise multi-session*** base.
 
     ![Windows 10 Base](./media/dt-to-labs/win10base.png)
 
@@ -207,27 +205,20 @@ Contoso needs to create a Windows Virtual Desktop which can be used by remote de
 
     ![Artifacts](./media/dt-to-labs/artifacts.png)
 
- Learn more about using [Formulas](https://docs.microsoft.com/en-us/azure/lab-services/devtest-lab-manage-formulas) with Azure DevTest Labs.
-
-2. With the Formula created, Contoso now creates a VM from the ***RemoteDevs*** Forumla.
- - From the All virtual machines menu, Contoso selects +Add and then the RemoteDevs base.
-
-    ![Create VM](./media/dt-to-labs/createvm.png)
-
  - The VM configuration is reviewed and accepted given that is is made from the RemoveDev Formula.
 
-    ![Create VM from Formula](./media/dt-to-labs/vmfrombase.png)
+    ![Create VM from Base](./media/dt-to-labs/vmfrombase.png)
     
- - Once the VM is created Contoso's Remote Developers can then connect and use this development workstation for their work. The artifacts selected in the Formula are installed saving Developers time configuring their workstation.
+ - Once the VM is created Contoso's Remote Developers can then connect and use this development workstation for their work. The artifacts selected are installed saving Developers time configuring their workstation.
 
     ![Remote Devs VM](./media/dt-to-labs/remotevm.png)
 
- ## Step 4: Create VMs within DevTest Labs for development
+ ## Step 4: Create Formulas and VMs within DevTest Labs for development & migrate databases
 
-With Azure DevTest Labs configured and the Remote Developers workstation up and running, now Contoso focuses on building their VMs for development. To get started, Contoso creates their first Windows based Application VM and then SQL Database VM.
+With Azure DevTest Labs configured and the Remote Developers workstation up and running, now Contoso focuses on building their VMs for development. To get started, Contoso completes the following steps:
 
-- Application VMs are built using the bases provided by Azure DevTest Labs
-- Database VMs are built using the bases provided by Azure DevTest Labs
+- Create Formulas (reusable bases), for application and database VMs
+- Application and database VMs are built using the Contoso Formulas
 
 1. Application VMs are built using the bases provided by Azure DevTest Labs
 
