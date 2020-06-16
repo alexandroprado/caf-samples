@@ -219,32 +219,59 @@ Contoso needs to create a Windows Virtual Desktop for remote developers.
 With Azure DevTest Labs configured and the Remote Developers workstation up and running, now Contoso focuses on building their VMs for development. To get started, Contoso completes the following steps:
 
 - Create Formulas (reusable bases), for application and database VMs
-- Application and database VMs are built using the Contoso Formulas
+- Provision application and database VMs using the Formulas
 
-1. Application VMs are built using the bases provided by Azure DevTest Labs
+1. Create Formulas (reusable bases), for application and database VMs
 
-- Contoso selects All virtual machines and then Windows Server 2012 R2 Datacenter to match the configuration of their current application.
+ - Contoso opens the the Formulas, clicks +Add, and selects a ***Windows 2012 R2 Datacenter*** base.
 
-    ![Application VM](./media/dt-to-labs/appvm.png)
+    ![Windows 2012R2 Base](./media/dt-to-labs/win2012base.png)
 
- - The VM is configured, with the size and artifacts that are required for this application VM.
+ - Next the size of the VM is configured along with the Artifacts to be installed. In this case, the developers will have access to common development tools such as Visual Studio Code, Git, and Chocolatey.
 
-    ![Configured App VM](./media/dt-to-labs/appvmconfig.png)
+    ![Windows 2012R2 Base Config](./media/dt-to-labs/win2012baseconfig.png)
 
- 
-2. Database VMs are built using the bases provided by Azure DevTest Labs
+ - To create the database vm Formula, Contoso follows the same basic steps this time selecting a SQL Server 2012 image for the base.
 
-- Contoso selects All virtual machines and then Windows Server 2012 R2 Datacenter to match the configuration of their current application.
+     ![SQL 2012R2 Base ](./media/dt-to-labs/sql2012base.png)
 
-    ![Database VM](./media/dt-to-labs/dbvm.png)
+- The Formula is configured, with the size and Artifacts that are required for this database development VM formula.
 
-- The VM is configured, with the size and artifacts that are required for this Database VM, including SQL Server Management Studio.
+    ![SQL 2012R2 Base Config](./media/dt-to-labs/sql2012baseconfig.png)
+
+- The SQL Server Management Studio is added as an Artifact.
 
     ![Configured Database VM](./media/dt-to-labs/dbvmconfig.png)
 
-- Contoso's Developers will now restore their development databases from either backups or using some type of code generation process to build the schema on the VMs. With the SQL Management Studio already installed using the artifacts these are simple tasks that don't require installing any tools.
+ Learn more about using [Formulas](https://docs.microsoft.com/en-us/azure/lab-services/devtest-lab-manage-formulas) with Azure DevTest Labs.
 
-With their Application and Database VMs now running in Azure DevTest Labs, the Remote developers and connect to the VMs using the Azure virtual network as they would normally.
+ - Contoso has now created the Windows based Formulas for their developers to use for their applications an databases.
+
+    ![Configured Database VM](./media/dt-to-labs/contosoformulas.png)
+
+2. Provision application and database VMs using the Formulas
+
+- With the Formulas created, Contoso next selects All virtual machines and then the ***Windows2012AppDevVmBase*** Formula to match the configuration of their current application development VMs.
+
+    ![Application VM](./media/dt-to-labs/appvm.png)
+
+ - The VM is configured, with the size and Artifacts that are required for this application VM.
+
+    ![Configured App VM](./media/dt-to-labs/appvmconfig.png)
+
+- Next, the database VM is provisioned using the ***SQLDbDevVmBase*** Formula to match the configuration of their current database development VMs. 
+
+    ![Database VM](./media/dt-to-labs/dbvm.png)
+
+- The VM is configured, with the size and Artifacts that are required.
+
+    ![Database VM Config](./media/dt-to-labs/dbvmconfig.png)
+
+- With their first VMs created along with their Remote Developer's workstation Contoso's Developers are ready to start writing code in Azure.
+
+![Contoso VMs](./media/dt-to-labs/contosovms.png)
+
+- Contoso can now restore their development databases from either backups or using some type of code generation process to build the schema on the VMs. With the SQL Management Studio already installed using the artifacts these are simple tasks that don't require installing any tools.
  
 ## Clean up after migration
 
