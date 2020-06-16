@@ -235,13 +235,9 @@ With Azure DevTest Labs configured and the Remote Developers workstation up and 
 
      ![SQL 2012R2 Base ](./media/dt-to-labs/sql2012base.png)
 
-- The Formula is configured, with the size and Artifacts that are required for this database development VM formula.
+- The Formula is configured, with the size and Artifacts, including SQL Server Management Studio, which are required for this database development VM formula.
 
     ![SQL 2012R2 Base Config](./media/dt-to-labs/sql2012baseconfig.png)
-
-- The SQL Server Management Studio is added as an Artifact.
-
-    ![Configured Database VM](./media/dt-to-labs/dbvmconfig.png)
 
  Learn more about using [Formulas](https://docs.microsoft.com/en-us/azure/lab-services/devtest-lab-manage-formulas) with Azure DevTest Labs.
 
