@@ -267,7 +267,7 @@ With Azure DevTest Labs configured and the Remote Developers workstation up and 
 
     ![Database VM Config](./media/dt-to-labs/dbvmconfig.png)
 
-- With their first VMs created along with their Remote Developer's workstation Contoso's Developers are ready to start writing code in Azure.
+- With their first VMs created along with their Remote Developer's workstation Contoso's Developers are ready to start writing code in Azure.  
 
 ![Contoso VMs](./media/dt-to-labs/contosovms.png)
 
@@ -275,7 +275,7 @@ With Azure DevTest Labs configured and the Remote Developers workstation up and 
  
 ## Clean up after migration
 
-With migration complete, all development VMs are now running in Azure DevTest Labs.
+Contoso will continue using these steps to migrate their VMs to Azure using DevTest Labs.  With each migration complete, all development VMs are now running in Azure DevTest Labs.
 
 Now, Contoso needs to complete these cleanup steps:
 
