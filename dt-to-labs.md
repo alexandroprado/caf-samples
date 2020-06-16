@@ -21,7 +21,7 @@ Contoso has several options available when moving DevTest to Azure.
 
 **Migration Options** | **Outcome**
 --- | ---
-[**Azure Migrate**](https://azure.microsoft.com/services/azure-migrate/) | [Assess](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware) and [migrate](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware) on-premises VMs.<br/><br/>Run DevTest Servers using Azure IaaS. <br/><br/> Manage VMs with [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/).
+[**Azure Migrate**](https://azure.microsoft.com/services/azure-migrate/) | [Assess](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware) and [migrate](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware) on-premises VMs<br/><br/>Run DevTest Servers using Azure IaaS<br/><br/> Manage VMs with [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)
 [**Azure DevTest Labs**](https://azure.microsoft.com/services/devtest-lab/) | Quickly provision development and test environments<br/><br/> Minimize waste with quotas and policies<br/><br/> Set automated shutdowns to minimize costs <br/><br/>Build Windows and Linux environments
 
 > [NOTE]:
@@ -67,7 +67,7 @@ After pinning down goals and requirements, Contoso designs and reviews a deploym
 
 - Contoso will use a [DevTest subscription](https://azure.microsoft.com/offers/ms-azr-0023p/) to save costs on Azure resources. This subscription offers significant savings including VMs that don't incur licensing fees for Microsoft software.
 - Azure DevTest Labs will be used for managing the environments. New VMs will be created in DevTest Labs in support of their move to new tools for Development and Test in the cloud.
-- The on-premises DevTest VMs in the Contoso data-center will be decommissioned after the migration is done.
+- The on-premises DevTest VMs in the Contoso data center will be decommissioned after the migration is done.
 - Developers and Testers will have access to Windows Virtual Desktop for their workstations.
 
 ![Scenario architecture](./media/dt-to-labs/architecture.png)
@@ -87,14 +87,14 @@ Contoso evaluates the proposed design by putting together a pros and cons list.
 
 **Consideration** | **Details**
 --- | ---
-**Pros** | All of the current development VMs (application and database) will be replaced by new VMs running in Azure DevTest Labs. This means they can take advantage of the features of a purpose built cloud development environment.<br/><br/> Contoso can take advantage of their investment in the Dev/Test subscription to save on licensing fees.<br/><br/> Contoso will retain full control of the app VMs in Azure.<br/><br/>Developers will be provided with rights to the subscription which empowers them to create new resources without waiting for IT to respond to their requests
-**Cons** | The migration will only move development to the cloud, but since they are still using VMs they won't be using using PaaS Services in their development. This means that Contoso will need have to start supporting the operations of their VMs including security patches. This was maintained by IT in the past, so they will need to find a solution to this new operational task.<br/><br/> Contoso will have to rebuild some their application VMs, but in doing so they will be automating the process. This means they can take advantage of building VMs in the cloud
+**Pros** | All of the current development VMs (application and database), will be replaced by new VMs running in Azure DevTest Labs. This means they can take advantage of the features of a purpose built cloud development environment.<br/><br/> Contoso can take advantage of their investment in the Dev/Test subscription to save on licensing fees.<br/><br/> Contoso will retain full control of the app VMs in Azure.<br/><br/>Developers will be provided with rights to the subscription which empowers them to create new resources without waiting for IT to respond to their requests
+**Cons** | The migration will only move development to the cloud, but since they are still using VMs they won't be using using PaaS Services in their development. This means that Contoso will need have to start supporting the operations of their VMs including security patches. This was maintained by IT in the past, so they will need to find a solution to this new operational task.<br/><br/> Contoso will have to build new application and database VMs, but in doing so they will be automating the process. This means they can take advantage of building VMs in the cloud and tools provided by DevTest Labs, so this is a positive outcome even with a con on their list.
 
 <!-- markdownlint-enable MD033 -->
 
 ### Migration process
 
-Contoso will migrate their development front-end and databases VMs to new Azure VMs using Azure DevTest Labs.
+Contoso will migrate their development application and databases VMs to new Azure VMs using Azure DevTest Labs.
 
 - They already have the [Azure infrastructure](./contoso-migration-infrastructure.md) in place, including their Development virtual network.
 - With everything prepared, Contoso provisions and configures DevTest Labs.
