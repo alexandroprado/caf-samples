@@ -206,7 +206,7 @@ Contoso needs to create a Windows Virtual Desktop for remote developers.
 
     ![Artifacts](./media/dt-to-labs/artifacts.png)
 
- - The VM configuration is reviewed and accepted given that is is made from the RemoveDev Formula.
+ - The VM configuration is reviewed for accuracy.
 
     ![Create VM from Base](./media/dt-to-labs/vmfrombase.png)
     
